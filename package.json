@@ -1,0 +1,19 @@
+{
+  "name": "testing_load_balancer",
+  "version": "1.0.0",
+  "description": "test load balancer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puchauhan2/testing_load_balancer.git"
+  },
+  "author": "Puneet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/puchauhan2/testing_load_balancer/issues"
+  },
+  "homepage": "https://github.com/puchauhan2/testing_load_balancer#readme"
+}
