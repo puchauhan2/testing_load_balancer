@@ -1,0 +1,8 @@
+{
+  "apps": [
+    {
+      "name": "load balance api",
+      "script": "index.js"
+    }
+  ]
+}
