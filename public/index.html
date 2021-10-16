@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<title>
+    शाहपुर ग्राम पंचायत चुनाव लोकप्रियता सर्वेक्षण 2021| Shahpur Gram Panchayat Election Popularity Survey 2021
+	</title>
+</head>
+<body><center>
+	<h1 style="color: green;font-size:60px;"><center>
+		शाहपुर ग्राम पंचायत चुनाव लोकप्रियता सर्वेक्षण
+	</center></h1>
+
+	<style>
+      label {
+        display: block;
+        margin: 20px;
+        overflow: auto;
+        font-family: sans-serif;
+        font-size: 18px;
+        color: #444;
+        padding: 20px 10px 10px 0;
+      }
+
+	  input {
+        width: 350px;
+        border: 2px solid green;
+        border-radius: 6px;
+        font-size: 30px;
+
+      }
+      input:focus {
+        outline: none;
+        border-color: #26bf47;
+        box-shadow: 0 0 10px #26bf47;
+      }
+
+	  select{
+	    font-size:35px;
+		border: 2px solid green;
+		border-radius: 6px;
+}
+
+      select:focus {
+        outline: none;
+        border-color: #26bf47;
+        box-shadow: 0 0 10px #26bf47;
+      }
+
+		</style>
+
+	<p>
+		<label for="fname" style="color: black;font-size:50px;" >अपना मोबाइल नंबर निचे डाले:</label>
+		 <input type="text" id="mnumber" name="fname"  required minlength="10" required maxlength="10" >
+	</p>
+
+	<p style="color:black;font-size:50px;">अपने प्रत्याशी का चयन करें :
+		<select id="select1">
+			<option value="apna"; >प्रत्याशी के नाम के लिए क्लिक करे</option>
+			<option value="Ajit Rajbhar"; >Ajit Rajbhar</option>
+			<option value="Singhasan Chauhan">Singhasan Chauhan</option>
+			<option value="Anil Rajbhar">Anil Rajbhar</option>
+			<option value="Chilher Chauhan">Chilher Chauhan</option>
+			<option value="Devender Chauhan">Devender Chauhan</option>
+			<option value="Devender Rajbhar">Devender Rajbhar</option>
+			<option value="Pramod Yadav">Pramod Yadav</option>
+			<option value="Md.Arif Ansari">Md.Arif Ansari</option>
+			<option value="Rabinder Yadav">Rabinder Yadav</option>
+			<option value="No choice">No choice </option>
+		</select>	
+	</p>
+	
+	
+		<p style="color: black;font-size:50px;">अपने ग्राम का चयन करें :
+		<select id="select2">
+			<option value="gram"; >ग्राम के नाम के लिए क्लिक करे</option>
+			<option value="Shahpur"; >Shahpur</option>
+			<option value="Shahpur titiha">Shahpur titiha</option>
+			<option value="Adrahi">Adrahi</option>
+			<option value="Sabdalpur">Sabdalpur</option>
+			<option value="Yadav Nagar">Yadav Nagar</option>
+			<option value="Budhaipur">Budhaipur</option>
+			<option value="Banjariya">Banjariya</option>
+			<option value="Baharampur">Baharampur</option>
+			<option value="Nanda">Nanda</option>
+			<option value="Surahi">Surahi</option>
+			<option value="Magya">Magya</option>
+		</select>
+		
+		
+	</p>
+<style>
+	.btn {
+		border: 6px solid black;
+		background-color: white;
+		color: black;
+		padding: 14px 28px;
+		font-size: 16px;
+		cursor: pointer;
+		
+	  }
+	/* Green */
+.success {
+  border-color: green;
+  color: green;
+  border-radius: 6px;
+}
+
+.success:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+
+	
+	<button onclick="getOption()" class="btn success" style="color: black;font-size:35px;">
+		अपना वोट सबमिट करने के लिए यहाँ क्लिक करे
+	</button>
+	
+	<script type="text/javascript">
+		function getOption() {
+
+			name = document.getElementById("select1").value;
+			console.log(name)
+			
+			mobileno = document.getElementById("mnumber").value;
+			console.log(mobileno)
+			
+			village = document.getElementById("select2").value;
+			console.log(village)
+			
+			  if (mobileno == "" || isNaN(mobileno) || mobileno.length <= 9) {
+   			 alert("कृपया मान्य मोबाइल नंबर दर्ज करें");
+   			 return false;
+  			}
+
+			  if (name == "apna" ) {
+   			 alert("कृपया अपने प्रत्याशी का नाम चुने");
+   			 return false;
+  			}
+
+			  if (village == "gram" ) {
+   			 alert("कृपया अपने ग्राम नाम चुने");
+   			 return false;
+  			}
+		
+			  var value=[{pname : name ,pvillage : village,mobile : mobileno}]
+			  post_data = JSON.stringify(value)
+			$.ajax({
+   			 url: 'https://api.shahpurtitiha.tk/agentdetails' ,
+   			 type: 'POST', 
+			contentType: "application/json; charset=utf-8",   
+   			 //dataType: 'json',
+   			 data: post_data,
+   			 success: function (data) {
+			  console.log(data)
+
+			  window.location.href = 'https://shahpurtitiha.tk/response.html';
+				window.location = 'https://shahpurtitiha.tk/response.html';
+				window.location.assign('https://shahpurtitiha.tk/response.html');
+				window.location.replace('https://shahpurtitiha.tk/response.html');
+
+
+   			 },
+  			  error: function (x,e) {
+      		  alert('error');
+				console.log(e)
+   			 }
+			});  	
+
+		}
+	</script>
+	
+	<style>
+body {
+	background-image: url("back.jpg");
+        background-repeat:no-repeat;
+       background-size:cover;
+} 
+</style>
+
+	<h2 style="color: green;font-size:40px;"><center>
+		इसका परिणाम 24 अप्रैल को घोषित किया जाएगा | The Result will be declared on 24 April 
+	</center></h2>
+
+
+</center></body>
+
+</html>					
